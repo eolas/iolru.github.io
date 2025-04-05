@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ga">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOLRU - Foghlaim Mata Éasca | Easy Math Learning</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            padding: 30px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+            margin-left: 5px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .language-toggle {
+            background: none;
+            border: 2px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-toggle:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features {
+            padding: 60px 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact {
+            padding: 60px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">IOLRU<span>Math</span></div>
+                <ul>
+                    <li><a href="#features" class="nav-link" data-lang="ga">Gnéithe</a></li>
+                    <li><a href="#app" class="nav-link" data-lang="ga">Aip</a></li>
+                    <li><a href="#contact" class="nav-link" data-lang="ga">Teagmháil</a></li>
+                </ul>
+                <button class="language-toggle" id="langToggle" data-current="ga">Béarla</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1 data-lang="ga">Foghlaim Mata Éasca</h1>
+                <p data-lang="ga">Aip foghlama mata dírithe ar dhaltaí 12-15 bliana d'aois a mbíonn deacrachtaí acu le mata. Simplí, éasca le húsáid, agus éifeachtach.</p>
+                <div class="buttons">
+                    <a href="#" class="btn btn-primary" data-lang="ga">Faigh an Aip</a>
+                    <a href="#contact" class="btn btn-secondary" data-lang="ga">Teagmháil</a>
+                </div>
+            </section>
+
+            <section class="features" id="features">
+                <h2 data-lang="ga">Gnéithe Aip</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3 data-lang="ga">Ábhair Mata Éagsúla</h3>
+                        <p data-lang="ga">Réimse leathan d'ábhair mata a chumhdach ón gcuraclam náisiúnta.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3 data-lang="ga">Ceachtanna Gairide</h3>
+                        <p data-lang="ga">Mínithe simplí agus samplaí soiléire a dhéanann coincheapa mata inrochtana.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3 data-lang="ga">Tráthanna Ceisteanna Idirghníomhacha</h3>
+                        <p data-lang="ga">Cleacht agus athneartaigh do chuid scileanna le tráthanna ceisteanna spraíúla.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="app-preview" id="app">
+                <h2 data-lang="ga">Faoin Aip</h2>
+                <div class="feature-card">
+                    <p data-lang="ga">Is é is aidhm leis an aip ná eispéireas foghlama mata a chruthú atá dírithe ar dhaltaí a mbíonn deacrachtaí acu le mata. Tá sé deartha chun bheith simplí agus inrochtana, ag díriú ar choincheapa mata bunúsacha a mhíniú ar bhealach soiléir agus intuigthe.</p>
+                    <p data-lang="ga">Tá an aip ar fáil i nGaeilge, le tacaíocht don Bhéarla. Tá sé dírithe ar dhaltaí 12-15 bliana d'aois a bhfuil deacrachtaí acu le mata, ach is féidir le haon duine a bhfuil fonn orthu a gcuid scileanna mata a fheabhsú é a úsáid.</p>
+                </div>
+            </section>
+
+            <section class="contact" id="contact">
+                <h2 data-lang="ga">Teagmháil</h2>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-lang="ga">Ainm</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang="ga">Ríomhphost</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang="ga">Teachtaireacht</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-lang="ga">Seol Teachtaireacht</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p data-lang="ga">© 2025 IOLRU Math. Gach ceart ar cosaint.</p>
+            <p><a href="mailto:contact@iolru.org">contact@iolru.org</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const langToggle = document.getElementById('langToggle');
+            const langElements = document.querySelectorAll('[data-lang]');
+            
+            // Translations
+            const translations = {
+                'nav': {
+                    'ga': ['Gnéithe', 'Aip', 'Teagmháil'],
+                    'en': ['Features', 'App', 'Contact']
+                },
+                'hero': {
+                    'ga': ['Foghlaim Mata Éasca', 'Aip foghlama mata dírithe ar dhaltaí 12-15 bliana d\'aois a mbíonn deacrachtaí acu le mata. Simplí, éasca le húsáid, agus éifeachtach.', 'Faigh an Aip', 'Teagmháil'],
+                    'en': ['Easy Math Learning', 'A math learning app focused on 12-15 year old students who struggle with math. Simple, easy to use, and effective.', 'Get the App', 'Contact']
+                },
+                'features': {
+                    'ga': ['Gnéithe Aip', 'Ábhair Mata Éagsúla', 'Réimse leathan d\'ábhair mata a chumhdach ón gcuraclam náisiúnta.', 'Ceachtanna Gairide', 'Mínithe simplí agus samplaí soiléire a dhéanann coincheapa mata inrochtana.', 'Tráthanna Ceisteanna Idirghníomhacha', 'Cleacht agus athneartaigh do chuid scileanna le tráthanna ceisteanna spraíúla.'],
+                    'en': ['App Features', 'Various Math Topics', 'Wide range of math topics covered from the national curriculum.', 'Short Lessons', 'Simple explanations and clear examples that make math concepts accessible.', 'Interactive Quizzes', 'Practice and reinforce your skills with fun quizzes.']
+                },
+                'app': {
+                    'ga': ['Faoin Aip', 'Is é is aidhm leis an aip ná eispéireas foghlama mata a chruthú atá dírithe ar dhaltaí a mbíonn deacrachtaí acu le mata. Tá sé deartha chun bheith simplí agus inrochtana, ag díriú ar choincheapa mata bunúsacha a mhíniú ar bhealach soiléir agus intuigthe.', 'Tá an aip ar fáil i nGaeilge, le tacaíocht don Bhéarla. Tá sé dírithe ar dhaltaí 12-15 bliana d\'aois a bhfuil deacrachtaí acu le mata, ach is féidir le haon duine a bhfuil fonn orthu a gcuid scileanna mata a fheabhsú é a úsáid.'],
+                    'en': ['About the App', 'The app aims to create a math learning experience that is focused on students who struggle with math. It is designed to be simple and accessible, focusing on explaining basic math concepts in a clear and understandable way.', 'The app is available in Irish, with support for English. It is aimed at 12-15 year old students who have difficulties with math, but can be used by anyone looking to improve their math skills.']
+                },
+                'contact': {
+                    'ga': ['Teagmháil', 'Ainm', 'Ríomhphost', 'Teachtaireacht', 'Seol Teachtaireacht'],
+                    'en': ['Contact', 'Name', 'Email', 'Message', 'Send Message']
+                },
+                'footer': {
+                    'ga': ['© 2025 IOLRU Math. Gach ceart ar cosaint.'],
+                    'en': ['© 2025 IOLRU Math. All rights reserved.']
+                },
+                'buttons': {
+                    'ga': 'Béarla',
+                    'en': 'Gaeilge'
+                }
+            };
+            
+            // Toggle language
+            langToggle.addEventListener('click', function() {
+                const currentLang = this.getAttribute('data-current');
+                const newLang = currentLang === 'ga' ? 'en' : 'ga';
+                
+                // Update button text
+                this.textContent = translations.buttons[newLang];
+                this.setAttribute('data-current', newLang);
+                
+                // Update navigation links
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach((link, index) => {
+                    link.textContent = translations.nav[newLang][index];
+                });
+                
+                // Update hero section
+                const heroElements = document.querySelector('.hero').children;
+                heroElements[0].textContent = translations.hero[newLang][0]; // H1
+                heroElements[1].textContent = translations.hero[newLang][1]; // P
+                heroElements[2].children[0].textContent = translations.hero[newLang][2]; // First button
+                heroElements[2].children[1].textContent = translations.hero[newLang][3]; // Second button
+                
+                // Update features section
+                const featuresSection = document.querySelector('.features');
+                featuresSection.querySelector('h2').textContent = translations.features[newLang][0];
+                
+                const featureCards = featuresSection.querySelectorAll('.feature-card');
+                featureCards.forEach((card, index) => {
+                    card.querySelector('h3').textContent = translations.features[newLang][index * 2 + 1];
+                    card.querySelector('p').textContent = translations.features[newLang][index * 2 + 2];
+                });
+                
+                // Update app section
+                const appSection = document.querySelector('.app-preview');
+                appSection.querySelector('h2').textContent = translations.app[newLang][0];
+                const appParagraphs = appSection.querySelectorAll('p');
+                appParagraphs[0].textContent = translations.app[newLang][1];
+                appParagraphs[1].textContent = translations.app[newLang][2];
+                
+                // Update contact section
+                const contactSection = document.querySelector('.contact');
+                contactSection.querySelector('h2').textContent = translations.contact[newLang][0];
+                const formLabels = contactSection.querySelectorAll('label');
+                formLabels[0].textContent = translations.contact[newLang][1]; // Name
+                formLabels[1].textContent = translations.contact[newLang][2]; // Email
+                formLabels[2].textContent = translations.contact[newLang][3]; // Message
+                contactSection.querySelector('button').textContent = translations.contact[newLang][4]; // Submit button
+                
+                // Update footer
+                document.querySelector('footer p[data-lang]').textContent = translations.footer[newLang][0];
+            });
+            
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real implementation, you would send the form data to your backend
+                alert('Your message has been sent. Thank you for contacting us!');
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
