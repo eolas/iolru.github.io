@@ -178,7 +178,7 @@
 
     /* Features Section */
     .section {
-      padding: 100px 0;
+      padding: 70px 0;
     }
 
     .section-title {
@@ -199,7 +199,7 @@
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
+      gap: 30px;
     }
 
     .feature {
@@ -234,7 +234,7 @@
     /* Topics Section */
     .topics-section {
       background-color: var(--section-bg);
-      padding: 100px 0;
+      padding: 70px 0;
     }
 
     .topics-grid {
@@ -611,8 +611,6 @@
   <section class="section" id="features">
     <div class="container">
       <h2 class="section-title">App Features</h2>
-      <p class="section-subtitle">Our app is designed to make learning math easier and more engaging for
-        students who find it challenging.</p>
 
       <div class="features">
         <div class="feature animate">
@@ -620,26 +618,15 @@
             <i class="fas fa-language"></i>
           </div>
           <h3>Bilingual Support</h3>
-          <p>Toggle between Irish and English at any point in the app to learn mathematics in your preferred language.
-          </p>
-        </div>
-
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-book-open"></i>
-          </div>
-          <h3>Learning Sections</h3>
-          <p>Revisit class concepts with concise explanations and interactive examples that reinforce what you've
-            learned.</p>
+          <p>Toggle between Irish and English at any point in the app.</p>
         </div>
 
         <div class="feature animate">
           <div class="feature-icon">
             <i class="fas fa-tasks"></i>
           </div>
-          <h3>Practice Quizzes</h3>
-          <p>Test your understanding with topic-specific quizzes that help solidify your knowledge of key math concepts.
-          </p>
+          <h3>Topic questions</h3>
+          <p>Practice topic questions to refresh your knowledge of key math topics.</p>
         </div>
 
         <div class="feature animate">
@@ -650,21 +637,6 @@
           <p>Monitor your improvement with progress bars for each math topic based on your quiz performance.</p>
         </div>
 
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-chalkboard-teacher"></i>
-          </div>
-          <h3>Classroom Connection</h3>
-          <p>Designed to complement in-person classes, providing a helpful reference for what you've learned.</p>
-        </div>
-
-        <div class="feature animate">
-          <div class="feature-icon">
-            <i class="fas fa-thumbs-up"></i>
-          </div>
-          <h3>Confidence Building</h3>
-          <p>Gain math confidence through regular practice in a supportive, no-pressure digital environment.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -680,52 +652,15 @@
     </div>
   </section>
 
-  <!-- <section class="section screenshots" id="screenshots">
-    <div class="container">
-      <h2 class="section-title">App Screenshots</h2>
-      <p class="section-subtitle">See how the app looks and works with these screenshots</p>
-
-      <div class="screenshots-grid">
-      </div>
-    </div>
-  </section> -->
-
-  <!-- <section class="section how-it-works" id="how-it-works">
-    <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-subtitle">Our app complements your in-person math classes with a simple three-step approach</p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Classroom Learning</h3>
-          <p>Attend your scheduled one-hour in-person math class where the teacher introduces a specific math topic.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>App Reinforcement</h3>
-          <p>Use the app after class to review the topic with our concise learning sections and interactive examples.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Quiz & Progress</h3>
-          <p>Test your understanding with quizzes and track your progress as you gain confidence in each math topic.</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
   <footer>
     <div class="container">
       <div class="footer-content">
         <div class="footer-column">
           <h3>Gaelchursaí</h3>
-          <p>Providing education and training courses through the Irish language since 2011.</p>
+          <p>Providing education and training courses through the Irish language since 2011</p>
           <div class="social-links">
-            <a href="https://www.facebook.com/p/GaelCh%C3%BArsa%C3%AD-100057252048592/?locale=en_GB"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/p/GaelCh%C3%BArsa%C3%AD-100057252048592/?locale=en_GB"><i
+                class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/gaelchursai/?hl=en"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
@@ -756,127 +691,148 @@
     // Topic data from the JSON file
     const topicsData = [
       {
-        name: {
-          en: "Arithmetic",
-          ga: "Uimhríocht"
+        "name": {
+          "en": "Arithmetic",
+          "ga": "Uimhríocht"
         },
-        description: {
-          en: "This section covers the fundamental concepts of basic arithmetic, including addition, subtraction, multiplication, and division.",
-          ga: ""
+        "description": {
+          "en": "Learn the basics of arithmetic, covering addition, subtraction, multiplication, and division. Understand how to work with numbers, including negatives, and the order of operations.",
+          "ga": "Foghlaim buneolas na huimhríochta, ag clúdach suimiú, dealú, iolrú agus roinnt. Tuig conas oibriú le huimhreacha, lena n-áirítear diúltacha, agus ord na n-oibríochtaí."
         },
-        style: {
-          icon: "calculator",
-          colour: "#4285F4"
+        "_id": "6739f62e717b89815dd13a47",
+        "style": {
+          "icon": "calculator",
+          "colour": "#4285F4"
         },
-        objectives: {
-          en: [
+        "available": [
+          "learn",
+          "quiz"
+        ],
+        "objectives": {
+          "en": [
             "Cover basics of addition & subtraction",
             "Cover basics of multiplication & division.",
             "Understand order of operations (BIDMAS)",
             "Working with negative numbers"
           ],
-          ga: []
-        }
+          "ga": []
+        },
+        "topicId": 1
       },
       {
-        name: {
-          en: "Statistics",
-          ga: "Staitisticí"
+        "name": {
+          "en": "Statistics",
+          "ga": "Staitisticí"
         },
-        description: {
-          en: "Statistics is the collecting, ordering and analysing of data. It includes mean, mode, median and range.",
-          ga: "Is staitisticí sonraí a bhailiú, a ordú agus a anailís a dhéanamh orthu. Úsnaíonn sé meán, modh, airmheán agus raon."
+        "description": {
+          "en": "Understand how to collect, organize, and analyze data using statistics. Learn about key measures like mean, mode, median, and range.",
+          "ga": "Tuig conas sonraí a bhailiú, a eagrú agus a anailísiú ag úsáid staitisticí. Foghlaim faoi phríomhthomhais mar mheán, mód, airmheán agus raon."
         },
-        style: {
-          icon: "chart-bar",
-          colour: "#FBBC05"
+        "_id": "6739f51d717b89815dd13a44",
+        "style": {
+          "icon": "chart-bar",
+          "colour": "#FBBC05"
         },
-        objectives: {
-          en: [
+        "available": [
+          "quiz",
+          "learn"
+        ],
+        "objectives": {
+          "en": [
             "Work out the mean, mode and median",
             "Gather data",
             "Use data to work things out"
           ],
-          ga: [
+          "ga": [
             "Oibrigh amach an meán, an modh agus an t-airmheán",
             "Bailigh sonraí",
             "Úsáid sonraí le rudaí a oibriú amach"
           ]
-        }
+        },
+        "topicId": 2
       },
       {
-        name: {
-          en: "Sequences",
-          ga: "Seicheamh"
+        "name": {
+          "en": "Sequences",
+          "ga": "Seicheamh"
         },
-        description: {
-          en: "A sequence is an ordered list of numbers. For example 0, 1, 2, 3, 4, 5, ….. The order the numbers come in are important in a sequence.",
-          ga: "Is éard is seicheamh ann ná liosta ordaithe uimhreacha. Mar shampla 0, 1, 2, 3, 4, 5, ….. Tá an t-ord ina dtagann na huimhreacha tábhachtach i seicheamh."
+        "description": {
+          "en": "Explore sequences, which are ordered lists of numbers. Learn to identify different types and recognize the patterns or rules they follow.",
+          "ga": "Déan iniúchadh ar sheichimh, ar liostaí ordaithe uimhreacha iad. Foghlaim conas cineálacha éagsúla a aithint agus na patrúin nó rialacha a leanann siad a aithint."
         },
-        style: {
-          icon: "sort-numeric-up",
-          colour: "#34A853"
+        "_id": "6739f492717b89815dd13a43",
+        "style": {
+          "icon": "sort-numeric-up",
+          "colour": "#34A853"
         },
-        objectives: {
-          en: [
+        "available": [],
+        "objectives": {
+          "en": [
             "Define a sequence",
             "Identify different types of sequences",
             "Recognize patterns and rules"
           ],
-          ga: [
+          "ga": [
             "Sainmhínigh seicheamh",
             "Cineálacha éagsúla seichimh a aithint",
             "Patrúin agus rialacha a aithint"
           ]
-        }
+        },
+        "topicId": 3
       },
       {
-        name: {
-          en: "Outline & area",
-          ga: "Imlíne & achar"
+        "name": {
+          "en": "Outline & area", // Reverted name
+          "ga": "Imlíne & achar"    // Reverted name
         },
-        description: {
-          en: "Area is the space in a shape or an object or a surface. Perimeter the measure of the length of the outline of a shape, an object or a surface.",
-          ga: "Is é achar ann ná an spás i gcruth nó i dromchla. Is Imlíne ann ná tomhas fhad an imlíne crutha nó dromchla."
+        "description": {
+          "en": "Learn the difference between perimeter (the distance around a shape) and area (the space inside a shape). Practice calculating these for various shapes.",
+          "ga": "Foghlaim an difríocht idir imlíne (an fad timpeall ar chruth) agus achar (an spás laistigh de chruth). Cleachtaigh iad seo a ríomh do chruthanna éagsúla."
         },
-        style: {
-          icon: "draw-polygon",
-          colour: "#9C27B0"
+        "_id": "6739f58a717b89815dd13a45",
+        "style": {
+          "icon": "draw-polygon",
+          "colour": "#9C27B0"
         },
-        objectives: {
-          en: [
+        "available": [],
+        "objectives": {
+          "en": [
             "Understand the difference between finding the area and perimeter of a shape.",
             "Understand that the perimeter is measured in cm/m.",
             "Understand that the area is measured in cm^2 /m^2."
           ],
-          ga: [
+          "ga": [
             "An difríocht idir achar agus imlíne cruth a thuiscint.",
             "A thuiscint gur cm/m a thomhaistear an imlíne.",
             "A thuiscint gur cm^2 /m^2 a thomhaistear an t-achar."
           ]
-        }
+        },
+        "topicId": 4
       },
       {
-        name: {
-          en: "Fractions",
-          ga: "Codáin"
+        "name": {
+          "en": "Fractions",
+          "ga": "Codáin"
         },
-        description: {
-          en: "Fractions are used to represent parts of a whole or a group. Understanding fractions is an essential math skill for solving everyday problems.",
-          ga: "Úsáidtear codáin chun codanna de ghrúpa iomlán nó de ghrúpa a léiriú. Is scil riachtanach matamaitice é codáin a thuiscint chun fadhbanna laethúla a réiteach."
+        "description": {
+          "en": "Understand fractions as parts of a whole. Learn how to compare, add, subtract, and use fractions in everyday situations like measuring.",
+          "ga": "Tuig codáin mar chodanna d’iomlán. Foghlaim conas codáin a chur i gcomparáid, a shuimiú, a dhealú, agus a úsáid i gcásanna laethúla mar thomhas."
         },
-        style: {
-          icon: "chart-pie",
-          colour: "#FF9800"
+        "_id": "6730da9f08065f1eea9b8ce7",
+        "topicId": 5,
+        "available": [],
+        "style": {
+          "icon": "chart-pie",
+          "colour": "#FF9800"
         },
-        objectives: {
-          en: [
+        "objectives": {
+          "en": [
             "Understand what fractions represent and their key parts",
             "Learn how to compare, add and subtract fractions",
             "Learn how they are used in everyday situations, like measuring",
             "Build the confidence in solving fraction problems"
           ],
-          ga: [
+          "ga": [
             "A thuiscint cad a sheasann codáin agus a bpríomhchodanna",
             "Foghlaim conas codáin a chur i gcomparáid, a shuimiú agus a dhealú",
             "Foghlaim conas a úsáidtear iad i gcásanna laethúla, cosúil le tomhas",
@@ -885,58 +841,64 @@
         }
       },
       {
-        name: {
-          en: "Percentages",
-          ga: "Céatadáin"
+        "name": {
+          "en": "Percentages",
+          "ga": "Céatadáin"
         },
-        description: {
-          en: "Percentages are a way to express parts of a whole as a number out of 100. They're everywhere in daily life, from calculating discounts and tips to understanding grades and statistics.",
-          ga: "Is bealach iad na céatadáin chun codanna d'iomlán a chur in iúl mar uimhir as 100. Tá siad i ngach áit sa saol laethúil, ó lascainí agus leideanna a ríomh go dtí gráid agus staitisticí a thuiscint."
+        "description": {
+          "en": "Discover percentages, a way to show parts of a whole out of 100. Learn to calculate percentage changes and apply them to real-life scenarios like discounts.",
+          "ga": "Faigh amach faoi chéatadáin, bealach chun codanna d’iomlán as 100 a thaispeáint. Foghlaim conas athruithe céatadáin a ríomh agus iad a chur i bhfeidhm ar chásanna fíor, mar lascainí."
         },
-        style: {
-          icon: "percentage",
-          colour: "#00BCD4"
+        "_id": "67314262ee5f1619a2badeae",
+        "style": {
+          "icon": "percentage",
+          "colour": "#00BCD4"
         },
-        objectives: {
-          en: [
+        "available": [],
+        "objectives": {
+          "en": [
             "Understand what percentages represent and how they relate to fractions and decimals.",
             "Learn how to calculate percentages of a number, including increases and decreases.",
             "Explore real-world uses of percentages, like discounts, tips, and statistics.",
             "Build confidence in solving percentage problems."
           ],
-          ga: [
+          "ga": [
             "A thuiscint cad a sheasann céatadáin agus conas a bhaineann siad le codáin agus deachúlacha.",
-            "Foghlaim conas céatadáin d'uimhir a ríomh, lena n-áirítear méaduithe agus laghduithe.",
+            "Foghlaim conas céatadáin d’uimhir a ríomh, lena n-áirítear méaduithe agus laghduithe.",
             "Déan iniúchadh ar úsáidí fíordhomhanda na gcéatadán, amhail lascainí, leideanna agus staitisticí.",
             "Tóg muinín i réiteach fadhbanna céatadáin."
           ]
-        }
+        },
+        "topicId": 6
       },
       {
-        name: {
-          en: "Algebra",
-          ga: "Ailgéabar"
+        "name": {
+          "en": "Algebra",
+          "ga": "Ailgéabar"
         },
-        description: {
-          en: "Algebra uses letters and symbols in the place of numbers and can be used to simplify expressions. Each letter or symbol is a variable and can represent a range of values.",
-          ga: "Úsáideann an ailgéabar litreacha agus siombailí in áit na n-uimhreacha agus is féidir iad a úsáid chun rudaí a shimpliú. Tá remise de luach i gceist le gach litir agus siombail."
+        "description": {
+          "en": "Explore algebra, where letters and symbols represent numbers. Learn to work with expressions and solve equations to find unknown values.",
+          "ga": "Déan iniúchadh ar ailgéabar, áit a seasann litreacha agus siombailí d'uimhreacha. Foghlaim conas oibriú le sloinn agus cothromóidí a réiteach chun luachanna anaithnide a aimsiú."
         },
-        style: {
-          icon: "superscript",
-          colour: "#EA4335"
+        "_id": "6739f5e3717b89815dd13a46",
+        "style": {
+          "icon": "superscript",
+          "colour": "#EA4335"
         },
-        objectives: {
-          en: [
+        "available": [],
+        "objectives": {
+          "en": [
             "Defining and using basic algebra",
             "Solve linear equations and inequalities",
             "Using and understanding algebraic expressions"
           ],
-          ga: [
+          "ga": [
             "Ailgéabar bunúsach a mhiniú agus a úsáid",
             "Réitigh cothromóidí líneacha agus míchothromaíochtaí",
             "Sloinn ailgéabracha a úsáid agus a thuiscint"
           ]
-        }
+        },
+        "topicId": 7
       }
     ];
 
@@ -1008,20 +970,19 @@
 
         // Features section
         featuresTitle: "App Features",
-        featuresSubtitle: "Our app is designed to make learning math easier and more engaging for students who find it challenging.",
 
         // Feature cards
         featureBilingual: "Bilingual Support",
         featureBilingualDesc: "Toggle between Irish and English at any point in the app to learn mathematics in your preferred language.",
-        featureLearning: "Learning Sections",
-        featureLearningDesc: "Revisit class concepts with concise explanations and interactive examples that reinforce what you've learned.",
-        featureQuizzes: "Practice Quizzes",
-        featureQuizzesDesc: "Test your understanding with topic-specific quizzes that help solidify your knowledge of key math concepts.",
+        featureLearning: "Learning Sections", // Kept here for JS translation, but card removed from HTML
+        featureLearningDesc: "Short learning sections to revisit class concepts you've learned.",
+        featureQuizzes: "Topic Questions",
+        featureQuizzesDesc: "Practice topic questions to refresh your knowledge of key math topics.",
         featureProgress: "Progress Tracking",
         featureProgressDesc: "Monitor your improvement with progress bars for each math topic based on your quiz performance.",
-        featureClassroom: "Classroom Connection",
-        featureClassroomDesc: "Designed to complement in-person classes, providing a helpful reference for what you've learned.",
-        featureConfidence: "Confidence Building",
+        featureClassroom: "Classroom Connection", // Kept here for JS translation, but card removed from HTML
+        featureClassroomDesc: "Designed to complement in-person classes, providing a refresher for what you've learned.",
+        featureConfidence: "Confidence Building", // Kept here for JS translation, but card removed from HTML
         featureConfidenceDesc: "Gain math confidence through regular practice in a supportive, no-pressure digital environment.",
 
         // Topics section
@@ -1063,20 +1024,19 @@
 
         // Features section
         featuresTitle: "Gnéithe na hAipe",
-        featuresSubtitle: "Tá ár n-aip deartha chun foghlaim matamaitice a dhéanamh níos éasca agus níos mealltaí do dhaltaí a mheasann é a bheith dúshlánach.",
 
         // Feature cards
         featureBilingual: "Tacaíocht Dhátheangach",
         featureBilingualDesc: "Athraigh idir Gaeilge agus Béarla ag aon phointe san aip chun matamaitic a fhoghlaim i do rogha teanga.",
-        featureLearning: "Rannóga Foghlama",
-        featureLearningDesc: "Athchuairt ar choincheapa ranga le míniúcháin achomair agus samplaí idirghníomhacha a threisíonn a bhfuil foghlamtha agat.",
-        featureQuizzes: "Cleachtadh le Tráthanna na gCeist",
-        featureQuizzesDesc: "Tástáil do thuiscint le tráthanna na gceist ar ábhair ar leith a chabhraíonn le d'eolas ar choincheapa matamaitice tábhachtacha a dhaingniú.",
+        featureLearning: "Rannóga Foghlama", // Kept here for JS translation, but card removed from HTML
+        featureLearningDesc: "Codanna foghlama gearra chun athbhreithniú a dhéanamh ar choincheapa ranga atá foghlamtha agat.",
+        featureQuizzes: "Ceisteanna Topaice",
+        featureQuizzesDesc: "Cleachtaigh ceisteanna topaicí chun do chuid eolais ar thopaicí matamaitice a feabhas.",
         featureProgress: "Rianú Dul Chun Cinn",
         featureProgressDesc: "Déan monatóireacht ar do fheabhas le barraí dul chun cinn do gach ábhar matamaitice bunaithe ar do fheidhmíocht sna tráthanna na gceist.",
-        featureClassroom: "Nasc leis an Seomra Ranga",
+        featureClassroom: "Nasc leis an Seomra Ranga", // Kept here for JS translation, but card removed from HTML
         featureClassroomDesc: "Deartha chun ranganna duine le duine a chomhlánú, ag soláthar tagairt áisiúil don mhéid atá foghlamtha agat.",
-        featureConfidence: "Tógáil Muiníne",
+        featureConfidence: "Tógáil Muiníne", // Kept here for JS translation, but card removed from HTML
         featureConfidenceDesc: "Faigh muinín matamaitice trí chleachtadh rialta i dtimpeallacht dhigiteach thacúil, gan aon bhrú.",
 
         // Topics section
@@ -1165,25 +1125,26 @@
       // Update features section titles
       const featuresTitle = document.querySelector('#features .section-title');
       if (featuresTitle) featuresTitle.textContent = t.featuresTitle;
-      const featuresSubtitle = document.querySelector('#features .section-subtitle');
-      if (featuresSubtitle) featuresSubtitle.textContent = t.featuresSubtitle;
 
-      // Update feature cards
-      const features = document.querySelectorAll('.feature');
-      if (features.length >= 6) {
-        features[0].querySelector('h3').textContent = t.featureBilingual;
-        features[0].querySelector('p').textContent = t.featureBilingualDesc;
-        features[1].querySelector('h3').textContent = t.featureLearning;
-        features[1].querySelector('p').textContent = t.featureLearningDesc;
-        features[2].querySelector('h3').textContent = t.featureQuizzes;
-        features[2].querySelector('p').textContent = t.featureQuizzesDesc;
-        features[3].querySelector('h3').textContent = t.featureProgress;
-        features[3].querySelector('p').textContent = t.featureProgressDesc;
-        features[4].querySelector('h3').textContent = t.featureClassroom;
-        features[4].querySelector('p').textContent = t.featureClassroomDesc;
-        features[5].querySelector('h3').textContent = t.featureConfidence;
-        features[5].querySelector('p').textContent = t.featureConfidenceDesc;
+      // Update *remaining* feature cards (NOTE: Only update cards that still exist in HTML)
+      const features = document.querySelectorAll('#features .feature'); // Target specifically within #features
+      if (features.length > 0) {
+        if (features[0]) { // Check if the element exists before accessing its children
+          features[0].querySelector('h3').textContent = t.featureBilingual;
+          features[0].querySelector('p').textContent = t.featureBilingualDesc;
+        }
+        // Skip features[1] as it's removed (was Learning Sections)
+        if (features[1]) { // This is now the "Topic Questions" card
+          features[1].querySelector('h3').textContent = t.featureQuizzes;
+          features[1].querySelector('p').textContent = t.featureQuizzesDesc;
+        }
+        if (features[2]) { // This is now the "Progress Tracking" card
+          features[2].querySelector('h3').textContent = t.featureProgress;
+          features[2].querySelector('p').textContent = t.featureProgressDesc;
+        }
+        // Skip the indices for Classroom Connection and Confidence Building as they were removed
       }
+
 
       // Update topics section titles
       const topicsTitle = document.querySelector('#topics .section-title');
