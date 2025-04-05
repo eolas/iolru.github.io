@@ -1,479 +1,1320 @@
 <!DOCTYPE html>
-<html lang="ga">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IOLRU - Foghlaim Mata Éasca | Easy Math Learning</title>
-    <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --accent: #e74c3c;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            padding: 30px 0;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo span {
-            color: var(--secondary);
-            margin-left: 5px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        .language-toggle {
-            background: none;
-            border: 2px solid var(--primary);
-            padding: 8px 15px;
-            border-radius: 20px;
-            color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .language-toggle:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            border-radius: 10px;
-            margin: 30px 0;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .hero .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary {
-            background-color: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .features {
-            padding: 60px 0;
-        }
-        
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .contact {
-            padding: 60px 0;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-        }
-        
-        .contact h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            color: var(--dark);
-        }
-        
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaelchursaí Math Learning App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #5d9afc;
+      --arithmetic-color: #4285F4;
+      --statistics-color: #FBBC05;
+      --sequences-color: #34A853;
+      --outline-area-color: #9C27B0;
+      --fractions-color: #FF9800;
+      --percentages-color: #00BCD4;
+      --algebra-color: #EA4335;
+      --text-color: #333333;
+      --bg-color: #ffffff;
+      --section-bg: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      /* Added for fade transition */
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    /* Class to trigger fade out */
+    body.language-switching {
+      opacity: 0;
+    }
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--bg-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      /* Adjusted padding slightly */
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* --- Updated Language Toggle Styles --- */
+    .language-toggle {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      /* Rounded corners */
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .language-toggle:hover {
+      background-color: #4a8af0;
+      /* Slightly darker shade on hover */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .language-toggle:active {
+      transform: scale(0.98);
+      /* Slight shrink effect on click */
+    }
+
+    /* --- End Updated Language Toggle Styles --- */
+
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(to bottom right, rgba(93, 154, 252, 0.1), rgba(93, 154, 252, 0.05));
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+
+    .hero h1 span {
+      color: var(--primary-color);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #666;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(93, 154, 252, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(93, 154, 252, 0.4);
+    }
+
+    .hero-image {
+      margin-top: 50px;
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Features Section */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .feature {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Topics Section */
+    .topics-section {
+      background-color: var(--section-bg);
+      padding: 100px 0;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .topic-card {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .topic-card:hover {
+      /* Hover effect only on desktop */
+    }
+
+    @media (min-width: 769px) {
+      .topic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .topic-header {
+      padding: 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* Changed from gap to space-between for icon */
+      cursor: default;
+      /* Default cursor for desktop */
+    }
+
+    .topic-header-content {
+      /* New wrapper for icon and title */
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+
+    .topic-header-content i {
+      /* Target only the main icon */
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      /* Prevent icon from shrinking */
+    }
+
+    .topic-header-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    /* Style for the new toggle icon */
+    .topic-toggle-icon {
+      font-size: 1rem;
+      display: none;
+      /* Hidden by default, shown on mobile */
+      transition: transform 0.4s ease-in-out;
+      /* Smooth rotation */
+    }
+
+
+    .topic-body {
+      padding: 20px;
+      max-height: 500px;
+      /* Allow body to show fully on desktop */
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+      /* Smooth transition for desktop if needed */
+    }
+
+    .topic-body p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .topic-objectives {
+      margin-top: 15px;
+    }
+
+    .topic-objectives h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .topic-objectives ul {
+      list-style-type: none;
+      padding-left: 5px;
+    }
+
+    .topic-objectives li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .topic-objectives li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    /* App Screenshots Section */
+    .screenshots {
+      text-align: center;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .screenshot {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .screenshot img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot:hover img {
+      transform: scale(1.03);
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background-color: var(--section-bg);
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .step {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      max-width: 320px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #bbb;
+      margin-bottom: 10px;
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--primary-color);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      color: #fff;
+      background-color: #444;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary-color);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        /* Hide nav links on mobile */
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* --- Mobile Topic Collapse Styles --- */
+      .topics-grid {
+        grid-template-columns: 1fr;
+        /* Stack topics vertically on mobile */
+        gap: 15px;
+      }
+
+      .topic-header {
+        cursor: pointer;
+        /* Make header clickable on mobile */
+      }
+
+      .topic-body {
+        max-height: 0;
+        /* Collapse the body by default */
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+      }
+
+      .topic-card.active .topic-body {
+        max-height: 500px;
+        /* Set a max-height to allow expansion */
+        padding-top: 20px;
+        /* Restore padding when active */
+        padding-bottom: 20px;
+      }
+
+      .topic-toggle-icon {
+        display: inline-block;
+        /* Show the icon on mobile */
+      }
+
+      .topic-card.active .topic-toggle-icon {
+        transform: rotate(180deg);
+        /* Rotate icon when expanded */
+      }
+
+      /* --- End Mobile Topic Collapse Styles --- */
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      animation: fadeIn 0.6s ease-out forwards;
+      opacity: 0;
+      /* Start hidden for animation */
+      transform: translateY(20px);
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">IOLRU<span>Math</span></div>
-                <ul>
-                    <li><a href="#features" class="nav-link" data-lang="ga">Gnéithe</a></li>
-                    <li><a href="#app" class="nav-link" data-lang="ga">Aip</a></li>
-                    <li><a href="#contact" class="nav-link" data-lang="ga">Teagmháil</a></li>
-                </ul>
-                <button class="language-toggle" id="langToggle" data-current="ga">Béarla</button>
-            </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <h1>Iolrú</h1>
         </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="hero">
-                <h1 data-lang="ga">Foghlaim Mata Éasca</h1>
-                <p data-lang="ga">Aip foghlama mata dírithe ar dhaltaí 12-15 bliana d'aois a mbíonn deacrachtaí acu le mata. Simplí, éasca le húsáid, agus éifeachtach.</p>
-                <div class="buttons">
-                    <a href="#" class="btn btn-primary" data-lang="ga">Faigh an Aip</a>
-                    <a href="#contact" class="btn btn-secondary" data-lang="ga">Teagmháil</a>
-                </div>
-            </section>
-
-            <section class="features" id="features">
-                <h2 data-lang="ga">Gnéithe Aip</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📚</div>
-                        <h3 data-lang="ga">Ábhair Mata Éagsúla</h3>
-                        <p data-lang="ga">Réimse leathan d'ábhair mata a chumhdach ón gcuraclam náisiúnta.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📝</div>
-                        <h3 data-lang="ga">Ceachtanna Gairide</h3>
-                        <p data-lang="ga">Mínithe simplí agus samplaí soiléire a dhéanann coincheapa mata inrochtana.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎮</div>
-                        <h3 data-lang="ga">Tráthanna Ceisteanna Idirghníomhacha</h3>
-                        <p data-lang="ga">Cleacht agus athneartaigh do chuid scileanna le tráthanna ceisteanna spraíúla.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="app-preview" id="app">
-                <h2 data-lang="ga">Faoin Aip</h2>
-                <div class="feature-card">
-                    <p data-lang="ga">Is é is aidhm leis an aip ná eispéireas foghlama mata a chruthú atá dírithe ar dhaltaí a mbíonn deacrachtaí acu le mata. Tá sé deartha chun bheith simplí agus inrochtana, ag díriú ar choincheapa mata bunúsacha a mhíniú ar bhealach soiléir agus intuigthe.</p>
-                    <p data-lang="ga">Tá an aip ar fáil i nGaeilge, le tacaíocht don Bhéarla. Tá sé dírithe ar dhaltaí 12-15 bliana d'aois a bhfuil deacrachtaí acu le mata, ach is féidir le haon duine a bhfuil fonn orthu a gcuid scileanna mata a fheabhsú é a úsáid.</p>
-                </div>
-            </section>
-
-            <section class="contact" id="contact">
-                <h2 data-lang="ga">Teagmháil</h2>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" data-lang="ga">Ainm</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" data-lang="ga">Ríomhphost</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" data-lang="ga">Teachtaireacht</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn" data-lang="ga">Seol Teachtaireacht</button>
-                    </form>
-                </div>
-            </section>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#topics">Math Topics</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#how-it-works">How It Works</a>
         </div>
-    </main>
+        <button class="language-toggle" id="language-toggle-button">
+          English
+        </button>
+      </nav>
+    </div>
+  </header>
 
-    <footer>
-        <div class="container">
-            <p data-lang="ga">© 2025 IOLRU Math. Gach ceart ar cosaint.</p>
-            <p><a href="mailto:contact@iolru.org">contact@iolru.org</a></p>
+  <section class="hero">
+    <div class="container">
+      <h1>Learn Math with <span>Gaelchursaí</span></h1>
+      <p>Iolrú is a supportive math learning app to help students improve and build on their math skills. Available in
+        both Irish and English, our app's goal is to reinforces in-class learning.</p>
+      <a href="#features" class="cta-button">Discover the App</a>
+      <div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title">App Features</h2>
+      <p class="section-subtitle">Our app is designed to make learning math easier and more engaging for
+        students who find it challenging.</p>
+
+      <div class="features">
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3>Bilingual Support</h3>
+          <p>Toggle between Irish and English at any point in the app to learn mathematics in your preferred language.
+          </p>
         </div>
-    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Language toggle functionality
-            const langToggle = document.getElementById('langToggle');
-            const langElements = document.querySelectorAll('[data-lang]');
-            
-            // Translations
-            const translations = {
-                'nav': {
-                    'ga': ['Gnéithe', 'Aip', 'Teagmháil'],
-                    'en': ['Features', 'App', 'Contact']
-                },
-                'hero': {
-                    'ga': ['Foghlaim Mata Éasca', 'Aip foghlama mata dírithe ar dhaltaí 12-15 bliana d\'aois a mbíonn deacrachtaí acu le mata. Simplí, éasca le húsáid, agus éifeachtach.', 'Faigh an Aip', 'Teagmháil'],
-                    'en': ['Easy Math Learning', 'A math learning app focused on 12-15 year old students who struggle with math. Simple, easy to use, and effective.', 'Get the App', 'Contact']
-                },
-                'features': {
-                    'ga': ['Gnéithe Aip', 'Ábhair Mata Éagsúla', 'Réimse leathan d\'ábhair mata a chumhdach ón gcuraclam náisiúnta.', 'Ceachtanna Gairide', 'Mínithe simplí agus samplaí soiléire a dhéanann coincheapa mata inrochtana.', 'Tráthanna Ceisteanna Idirghníomhacha', 'Cleacht agus athneartaigh do chuid scileanna le tráthanna ceisteanna spraíúla.'],
-                    'en': ['App Features', 'Various Math Topics', 'Wide range of math topics covered from the national curriculum.', 'Short Lessons', 'Simple explanations and clear examples that make math concepts accessible.', 'Interactive Quizzes', 'Practice and reinforce your skills with fun quizzes.']
-                },
-                'app': {
-                    'ga': ['Faoin Aip', 'Is é is aidhm leis an aip ná eispéireas foghlama mata a chruthú atá dírithe ar dhaltaí a mbíonn deacrachtaí acu le mata. Tá sé deartha chun bheith simplí agus inrochtana, ag díriú ar choincheapa mata bunúsacha a mhíniú ar bhealach soiléir agus intuigthe.', 'Tá an aip ar fáil i nGaeilge, le tacaíocht don Bhéarla. Tá sé dírithe ar dhaltaí 12-15 bliana d\'aois a bhfuil deacrachtaí acu le mata, ach is féidir le haon duine a bhfuil fonn orthu a gcuid scileanna mata a fheabhsú é a úsáid.'],
-                    'en': ['About the App', 'The app aims to create a math learning experience that is focused on students who struggle with math. It is designed to be simple and accessible, focusing on explaining basic math concepts in a clear and understandable way.', 'The app is available in Irish, with support for English. It is aimed at 12-15 year old students who have difficulties with math, but can be used by anyone looking to improve their math skills.']
-                },
-                'contact': {
-                    'ga': ['Teagmháil', 'Ainm', 'Ríomhphost', 'Teachtaireacht', 'Seol Teachtaireacht'],
-                    'en': ['Contact', 'Name', 'Email', 'Message', 'Send Message']
-                },
-                'footer': {
-                    'ga': ['© 2025 IOLRU Math. Gach ceart ar cosaint.'],
-                    'en': ['© 2025 IOLRU Math. All rights reserved.']
-                },
-                'buttons': {
-                    'ga': 'Béarla',
-                    'en': 'Gaeilge'
-                }
-            };
-            
-            // Toggle language
-            langToggle.addEventListener('click', function() {
-                const currentLang = this.getAttribute('data-current');
-                const newLang = currentLang === 'ga' ? 'en' : 'ga';
-                
-                // Update button text
-                this.textContent = translations.buttons[newLang];
-                this.setAttribute('data-current', newLang);
-                
-                // Update navigation links
-                const navLinks = document.querySelectorAll('.nav-link');
-                navLinks.forEach((link, index) => {
-                    link.textContent = translations.nav[newLang][index];
-                });
-                
-                // Update hero section
-                const heroElements = document.querySelector('.hero').children;
-                heroElements[0].textContent = translations.hero[newLang][0]; // H1
-                heroElements[1].textContent = translations.hero[newLang][1]; // P
-                heroElements[2].children[0].textContent = translations.hero[newLang][2]; // First button
-                heroElements[2].children[1].textContent = translations.hero[newLang][3]; // Second button
-                
-                // Update features section
-                const featuresSection = document.querySelector('.features');
-                featuresSection.querySelector('h2').textContent = translations.features[newLang][0];
-                
-                const featureCards = featuresSection.querySelectorAll('.feature-card');
-                featureCards.forEach((card, index) => {
-                    card.querySelector('h3').textContent = translations.features[newLang][index * 2 + 1];
-                    card.querySelector('p').textContent = translations.features[newLang][index * 2 + 2];
-                });
-                
-                // Update app section
-                const appSection = document.querySelector('.app-preview');
-                appSection.querySelector('h2').textContent = translations.app[newLang][0];
-                const appParagraphs = appSection.querySelectorAll('p');
-                appParagraphs[0].textContent = translations.app[newLang][1];
-                appParagraphs[1].textContent = translations.app[newLang][2];
-                
-                // Update contact section
-                const contactSection = document.querySelector('.contact');
-                contactSection.querySelector('h2').textContent = translations.contact[newLang][0];
-                const formLabels = contactSection.querySelectorAll('label');
-                formLabels[0].textContent = translations.contact[newLang][1]; // Name
-                formLabels[1].textContent = translations.contact[newLang][2]; // Email
-                formLabels[2].textContent = translations.contact[newLang][3]; // Message
-                contactSection.querySelector('button').textContent = translations.contact[newLang][4]; // Submit button
-                
-                // Update footer
-                document.querySelector('footer p[data-lang]').textContent = translations.footer[newLang][0];
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h3>Learning Sections</h3>
+          <p>Revisit class concepts with concise explanations and interactive examples that reinforce what you've
+            learned.</p>
+        </div>
+
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>Practice Quizzes</h3>
+          <p>Test your understanding with topic-specific quizzes that help solidify your knowledge of key math concepts.
+          </p>
+        </div>
+
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Progress Tracking</h3>
+          <p>Monitor your improvement with progress bars for each math topic based on your quiz performance.</p>
+        </div>
+
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3>Classroom Connection</h3>
+          <p>Designed to complement in-person classes, providing a helpful reference for what you've learned.</p>
+        </div>
+
+        <div class="feature animate">
+          <div class="feature-icon">
+            <i class="fas fa-thumbs-up"></i>
+          </div>
+          <h3>Confidence Building</h3>
+          <p>Gain math confidence through regular practice in a supportive, no-pressure digital environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topics-section" id="topics">
+    <div class="container">
+      <h2 class="section-title">Math Topics</h2>
+      <p class="section-subtitle">Our app covers essential math topics needed for your studies, each with its own
+        dedicated learning section and quiz.</p>
+
+      <div class="topics-grid">
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section screenshots" id="screenshots">
+    <div class="container">
+      <h2 class="section-title">App Screenshots</h2>
+      <p class="section-subtitle">See how the app looks and works with these screenshots</p>
+
+      <div class="screenshots-grid">
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Our app complements your in-person math classes with a simple three-step approach</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Classroom Learning</h3>
+          <p>Attend your scheduled one-hour in-person math class where the teacher introduces a specific math topic.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>App Reinforcement</h3>
+          <p>Use the app after class to review the topic with our concise learning sections and interactive examples.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Quiz & Progress</h3>
+          <p>Test your understanding with quizzes and track your progress as you gain confidence in each math topic.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Gaelchursaí</h3>
+          <p>Providing education and training courses through the Irish language since 2011.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#features">Features</a>
+          <a href="#topics">Math Topics</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-envelope" style="margin-right: .3rem;"></i>gaelchursai@gmail.com</p>
+          <p><i class="fas fa-phone" style="margin-right: .3rem;"></i>02890438771</p>
+          <p><i class="fas fa-map-marker-alt" style="margin-right: .3rem;"></i>199 Falls Road Belfast BT12 6FB</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Gaelchursaí. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Topic data from the JSON file
+    const topicsData = [
+      {
+        name: {
+          en: "Arithmetic",
+          ga: "Uimhríocht"
+        },
+        description: {
+          en: "This section covers the fundamental concepts of basic arithmetic, including addition, subtraction, multiplication, and division.",
+          ga: ""
+        },
+        style: {
+          icon: "calculator",
+          colour: "#4285F4"
+        },
+        objectives: {
+          en: [
+            "Cover basics of addition & subtraction",
+            "Cover basics of multiplication & division.",
+            "Understand order of operations (BIDMAS)",
+            "Working with negative numbers"
+          ],
+          ga: []
+        }
+      },
+      {
+        name: {
+          en: "Statistics",
+          ga: "Staitisticí"
+        },
+        description: {
+          en: "Statistics is the collecting, ordering and analysing of data. It includes mean, mode, median and range.",
+          ga: "Is staitisticí sonraí a bhailiú, a ordú agus a anailís a dhéanamh orthu. Úsnaíonn sé meán, modh, airmheán agus raon."
+        },
+        style: {
+          icon: "chart-bar",
+          colour: "#FBBC05"
+        },
+        objectives: {
+          en: [
+            "Work out the mean, mode and median",
+            "Gather data",
+            "Use data to work things out"
+          ],
+          ga: [
+            "Oibrigh amach an meán, an modh agus an t-airmheán",
+            "Bailigh sonraí",
+            "Úsáid sonraí le rudaí a oibriú amach"
+          ]
+        }
+      },
+      {
+        name: {
+          en: "Sequences",
+          ga: "Seicheamh"
+        },
+        description: {
+          en: "A sequence is an ordered list of numbers. For example 0, 1, 2, 3, 4, 5, ….. The order the numbers come in are important in a sequence.",
+          ga: "Is éard is seicheamh ann ná liosta ordaithe uimhreacha. Mar shampla 0, 1, 2, 3, 4, 5, ….. Tá an t-ord ina dtagann na huimhreacha tábhachtach i seicheamh."
+        },
+        style: {
+          icon: "sort-numeric-up",
+          colour: "#34A853"
+        },
+        objectives: {
+          en: [
+            "Define a sequence",
+            "Identify different types of sequences",
+            "Recognize patterns and rules"
+          ],
+          ga: [
+            "Sainmhínigh seicheamh",
+            "Cineálacha éagsúla seichimh a aithint",
+            "Patrúin agus rialacha a aithint"
+          ]
+        }
+      },
+      {
+        name: {
+          en: "Outline & area",
+          ga: "Imlíne & achar"
+        },
+        description: {
+          en: "Area is the space in a shape or an object or a surface. Perimeter the measure of the length of the outline of a shape, an object or a surface.",
+          ga: "Is é achar ann ná an spás i gcruth nó i dromchla. Is Imlíne ann ná tomhas fhad an imlíne crutha nó dromchla."
+        },
+        style: {
+          icon: "draw-polygon",
+          colour: "#9C27B0"
+        },
+        objectives: {
+          en: [
+            "Understand the difference between finding the area and perimeter of a shape.",
+            "Understand that the perimeter is measured in cm/m.",
+            "Understand that the area is measured in cm^2 /m^2."
+          ],
+          ga: [
+            "An difríocht idir achar agus imlíne cruth a thuiscint.",
+            "A thuiscint gur cm/m a thomhaistear an imlíne.",
+            "A thuiscint gur cm^2 /m^2 a thomhaistear an t-achar."
+          ]
+        }
+      },
+      {
+        name: {
+          en: "Fractions",
+          ga: "Codáin"
+        },
+        description: {
+          en: "Fractions are used to represent parts of a whole or a group. Understanding fractions is an essential math skill for solving everyday problems.",
+          ga: "Úsáidtear codáin chun codanna de ghrúpa iomlán nó de ghrúpa a léiriú. Is scil riachtanach matamaitice é codáin a thuiscint chun fadhbanna laethúla a réiteach."
+        },
+        style: {
+          icon: "chart-pie",
+          colour: "#FF9800"
+        },
+        objectives: {
+          en: [
+            "Understand what fractions represent and their key parts",
+            "Learn how to compare, add and subtract fractions",
+            "Learn how they are used in everyday situations, like measuring",
+            "Build the confidence in solving fraction problems"
+          ],
+          ga: [
+            "A thuiscint cad a sheasann codáin agus a bpríomhchodanna",
+            "Foghlaim conas codáin a chur i gcomparáid, a shuimiú agus a dhealú",
+            "Foghlaim conas a úsáidtear iad i gcásanna laethúla, cosúil le tomhas",
+            "Tóg an mhuinín agus tú ag réiteach fadhbanna codáin"
+          ]
+        }
+      },
+      {
+        name: {
+          en: "Percentages",
+          ga: "Céatadáin"
+        },
+        description: {
+          en: "Percentages are a way to express parts of a whole as a number out of 100. They're everywhere in daily life, from calculating discounts and tips to understanding grades and statistics.",
+          ga: "Is bealach iad na céatadáin chun codanna d'iomlán a chur in iúl mar uimhir as 100. Tá siad i ngach áit sa saol laethúil, ó lascainí agus leideanna a ríomh go dtí gráid agus staitisticí a thuiscint."
+        },
+        style: {
+          icon: "percentage",
+          colour: "#00BCD4"
+        },
+        objectives: {
+          en: [
+            "Understand what percentages represent and how they relate to fractions and decimals.",
+            "Learn how to calculate percentages of a number, including increases and decreases.",
+            "Explore real-world uses of percentages, like discounts, tips, and statistics.",
+            "Build confidence in solving percentage problems."
+          ],
+          ga: [
+            "A thuiscint cad a sheasann céatadáin agus conas a bhaineann siad le codáin agus deachúlacha.",
+            "Foghlaim conas céatadáin d'uimhir a ríomh, lena n-áirítear méaduithe agus laghduithe.",
+            "Déan iniúchadh ar úsáidí fíordhomhanda na gcéatadán, amhail lascainí, leideanna agus staitisticí.",
+            "Tóg muinín i réiteach fadhbanna céatadáin."
+          ]
+        }
+      },
+      {
+        name: {
+          en: "Algebra",
+          ga: "Ailgéabar"
+        },
+        description: {
+          en: "Algebra uses letters and symbols in the place of numbers and can be used to simplify expressions. Each letter or symbol is a variable and can represent a range of values.",
+          ga: "Úsáideann an ailgéabar litreacha agus siombailí in áit na n-uimhreacha agus is féidir iad a úsáid chun rudaí a shimpliú. Tá remise de luach i gceist le gach litir agus siombail."
+        },
+        style: {
+          icon: "superscript",
+          colour: "#EA4335"
+        },
+        objectives: {
+          en: [
+            "Defining and using basic algebra",
+            "Solve linear equations and inequalities",
+            "Using and understanding algebraic expressions"
+          ],
+          ga: [
+            "Ailgéabar bunúsach a mhiniú agus a úsáid",
+            "Réitigh cothromóidí líneacha agus míchothromaíochtaí",
+            "Sloinn ailgéabracha a úsáid agus a thuiscint"
+          ]
+        }
+      }
+    ];
+
+    // Function to render topic cards
+    function renderTopics() {
+      const topicsGrid = document.querySelector('.topics-grid');
+      topicsGrid.innerHTML = ''; // Clear existing topics if any
+
+      topicsData.forEach(topic => {
+        const topicCard = document.createElement('div');
+        topicCard.className = 'topic-card';
+
+        const topicHeader = document.createElement('div');
+        topicHeader.className = 'topic-header';
+        topicHeader.style.backgroundColor = topic.style.colour;
+
+        // --- Updated Header HTML ---
+        topicHeader.innerHTML = `
+                    <div class="topic-header-content">
+                         <i class="fas fa-${topic.style.icon}"></i>
+                         <h3>${topic.name[currentLanguage] || topic.name.en}</h3>
+                    </div>
+                    <span class="topic-toggle-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                `;
+        // --- End Updated Header HTML ---
+
+        const topicBody = document.createElement('div');
+        topicBody.className = 'topic-body';
+
+        const descText = topic.description[currentLanguage] || topic.description.en;
+        const description = descText // Removed length check as it's not strictly necessary now
+          ? descText
+          : '';
+
+        const objectives = topic.objectives[currentLanguage] || topic.objectives.en;
+        const objectivesTitle = translations[currentLanguage].topicObjectives;
+
+        topicBody.innerHTML = `
+                    <p>${description}</p>
+                    <div class="topic-objectives">
+                        <h4>${objectivesTitle}</h4>
+                        <ul>
+                            ${objectives.slice(0, 3).map(objective => `<li>${objective}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+
+        topicCard.appendChild(topicHeader);
+        topicCard.appendChild(topicBody);
+        topicsGrid.appendChild(topicCard);
+      });
+    }
+
+    // Website text content in both languages
+    const translations = {
+      en: {
+        // Nav links
+        navFeatures: "Features",
+        navTopics: "Math Topics",
+        navScreenshots: "Screenshots",
+        navHowItWorks: "How It Works",
+
+        // Hero section
+        heroTitle: "Learn Math with",
+        heroSubtitle: "Iolrú is a supportive math learning app to help students improve and build on their math skills. Available in both Irish and English, our app\'s goal is to reinforces in-class learning.",
+        heroButton: "Discover the App",
+
+        // Features section
+        featuresTitle: "App Features",
+        featuresSubtitle: "Our app is designed to make learning math easier and more engaging for students who find it challenging.",
+
+        // Feature cards
+        featureBilingual: "Bilingual Support",
+        featureBilingualDesc: "Toggle between Irish and English at any point in the app to learn mathematics in your preferred language.",
+        featureLearning: "Learning Sections",
+        featureLearningDesc: "Revisit class concepts with concise explanations and interactive examples that reinforce what you've learned.",
+        featureQuizzes: "Practice Quizzes",
+        featureQuizzesDesc: "Test your understanding with topic-specific quizzes that help solidify your knowledge of key math concepts.",
+        featureProgress: "Progress Tracking",
+        featureProgressDesc: "Monitor your improvement with progress bars for each math topic based on your quiz performance.",
+        featureClassroom: "Classroom Connection",
+        featureClassroomDesc: "Designed to complement in-person classes, providing a helpful reference for what you've learned.",
+        featureConfidence: "Confidence Building",
+        featureConfidenceDesc: "Gain math confidence through regular practice in a supportive, no-pressure digital environment.",
+
+        // Topics section
+        topicsTitle: "Math Topics",
+        topicsSubtitle: "Our app covers essential math topics needed for your studies, each with its own dedicated learning section and quiz.",
+        topicObjectives: "Learning Objectives:",
+
+        // Screenshots section
+        screenshotsTitle: "App Screenshots",
+        screenshotsSubtitle: "See how the app looks and works with these screenshots",
+
+        // How it works section
+        howItWorksTitle: "How It Works",
+        howItWorksSubtitle: "Our app complements your in-person math classes with a simple three-step approach",
+        howItWorksStep1: "Classroom Learning",
+        howItWorksStep1Desc: "Attend your scheduled one-hour in-person math class where the teacher introduces a specific math topic.",
+        howItWorksStep2: "App Reinforcement",
+        howItWorksStep2Desc: "Use the app after class to review the topic with our concise learning sections and interactive examples.",
+        howItWorksStep3: "Quiz & Progress",
+        howItWorksStep3Desc: "Test your understanding with quizzes and track your progress as you gain confidence in each math topic.",
+
+        // Footer
+        footerAbout: "Providing education and training courses through the Irish language since 2011.",
+        footerQuickLinks: "Quick Links",
+        footerContact: "Contact Us",
+        footerCopyright: "All rights reserved."
+      },
+      ga: {
+        // Nav links
+        navFeatures: "Gnéithe",
+        navTopics: "Ábhair Mhatamaitice",
+        navScreenshots: "Scáileáin",
+        navHowItWorks: "Conas a Oibríonn Sé",
+
+        // Hero section
+        heroTitle: "Foghlaim Matamaitic le",
+        heroSubtitle: "Is app foghlama matamaitice tacúil é Iolrú a chabhraíonn le daltaí feabhas a chur ar a scileanna matamaitice agus iad a fhorbairt. Ar fáil i nGaeilge agus i mBéarla araon, is é aidhm ár n-aipp ná foghlaim sa rang a threisiú.",
+        heroButton: "Taiscéal an Aip",
+
+        // Features section
+        featuresTitle: "Gnéithe na hAipe",
+        featuresSubtitle: "Tá ár n-aip deartha chun foghlaim matamaitice a dhéanamh níos éasca agus níos mealltaí do dhaltaí a mheasann é a bheith dúshlánach.",
+
+        // Feature cards
+        featureBilingual: "Tacaíocht Dhátheangach",
+        featureBilingualDesc: "Athraigh idir Gaeilge agus Béarla ag aon phointe san aip chun matamaitic a fhoghlaim i do rogha teanga.",
+        featureLearning: "Rannóga Foghlama",
+        featureLearningDesc: "Athchuairt ar choincheapa ranga le míniúcháin achomair agus samplaí idirghníomhacha a threisíonn a bhfuil foghlamtha agat.",
+        featureQuizzes: "Cleachtadh le Tráthanna na gCeist",
+        featureQuizzesDesc: "Tástáil do thuiscint le tráthanna na gceist ar ábhair ar leith a chabhraíonn le d'eolas ar choincheapa matamaitice tábhachtacha a dhaingniú.",
+        featureProgress: "Rianú Dul Chun Cinn",
+        featureProgressDesc: "Déan monatóireacht ar do fheabhas le barraí dul chun cinn do gach ábhar matamaitice bunaithe ar do fheidhmíocht sna tráthanna na gceist.",
+        featureClassroom: "Nasc leis an Seomra Ranga",
+        featureClassroomDesc: "Deartha chun ranganna duine le duine a chomhlánú, ag soláthar tagairt áisiúil don mhéid atá foghlamtha agat.",
+        featureConfidence: "Tógáil Muiníne",
+        featureConfidenceDesc: "Faigh muinín matamaitice trí chleachtadh rialta i dtimpeallacht dhigiteach thacúil, gan aon bhrú.",
+
+        // Topics section
+        topicsTitle: "Ábhair Mhatamaitice",
+        topicsSubtitle: "Clúdaíonn ár n-aip ábhair mhatamaitice riachtanacha a theastaíonn le haghaidh do staidéir, gach ceann le rannóg foghlama agus tráth na gceist tiomnaithe.",
+        topicObjectives: "Cuspóirí Foghlama:",
+
+        // Screenshots section
+        screenshotsTitle: "Scáileáin na hAipe",
+        screenshotsSubtitle: "Féach conas a fhéachann agus a oibríonn an aip leis na scáileáin seo",
+
+        // How it works section
+        howItWorksTitle: "Conas a Oibríonn Sé",
+        howItWorksSubtitle: "Comhlánaíonn ár n-aip do ranganna matamaitice duine le duine le cur chuige trí chéim simplí",
+        howItWorksStep1: "Foghlaim sa Seomra Ranga",
+        howItWorksStep1Desc: "Freastail ar do rang matamaitice duine le duine sceidealta uair an chloig ina gcuireann an múinteoir ábhar matamaitice ar leith i láthair.",
+        howItWorksStep2: "Treisiú leis an Aip",
+        howItWorksStep2Desc: "Úsáid an aip tar éis an ranga chun athbhreithniú a dhéanamh ar an ábhar lenár rannóga foghlama achomair agus samplaí idirghníomhacha.",
+        howItWorksStep3: "Tráth na gCeist & Dul Chun Cinn",
+        howItWorksStep3Desc: "Tástáil do thuiscint le tráthanna na gceist agus rianaigh do dhul chun cinn agus tú ag fáil muiníne i ngach ábhar matamaitice.",
+
+        // Footer
+        footerAbout: "Ag soláthar cúrsaí oideachais agus oiliúna trí mheán na Gaeilge ó 2011.",
+        footerQuickLinks: "Naisc Thapa",
+        footerContact: "Déan Teagmháil Linn",
+        footerCopyright: "Gach ceart ar cosaint."
+      }
+    };
+
+    // Language toggle functionality
+    let currentLanguage = 'en'; // Default language
+    const languageToggleButton = document.getElementById('language-toggle-button');
+
+    function toggleLanguage() {
+      // --- Fade Out ---
+      document.body.classList.add('language-switching');
+
+      // --- Wait for fade out, then change content ---
+      setTimeout(() => {
+        currentLanguage = currentLanguage === 'en' ? 'ga' : 'en';
+
+        // Update button text based on the *new* currentLanguage
+        languageToggleButton.textContent = currentLanguage === 'en' ? 'English' : 'Gaeilge';
+
+        // Update the rest of the website content
+        updatePageLanguage();
+
+        // Re-render topics in the new language
+        renderTopics();
+
+        // Re-attach topic click listeners after re-rendering
+        setupTopicClickListeners();
+
+        // --- Fade In ---
+        document.body.classList.remove('language-switching');
+
+      }, 400); // Match this duration to the CSS transition time
+    }
+
+    function updatePageLanguage() {
+      const t = translations[currentLanguage];
+      const bodyElement = document.body;
+
+      // Set lang attribute on html tag for accessibility and potential CSS targeting
+      document.documentElement.lang = currentLanguage;
+
+      // --- Update elements using querySelector and textContent/innerHTML ---
+
+      // Update navigation links (if they exist)
+      const navLinks = document.querySelectorAll('.nav-links a');
+      if (navLinks.length >= 4) {
+        navLinks[0].textContent = t.navFeatures;
+        navLinks[1].textContent = t.navTopics;
+        navLinks[2].textContent = t.navScreenshots;
+        navLinks[3].textContent = t.navHowItWorks;
+      }
+
+      // Update hero section
+      const heroH1 = document.querySelector('.hero h1');
+      if (heroH1) heroH1.innerHTML = `${t.heroTitle} <span>Gaelchursaí</span>`;
+      const heroP = document.querySelector('.hero p');
+      if (heroP) heroP.textContent = t.heroSubtitle;
+      const ctaButton = document.querySelector('.cta-button');
+      if (ctaButton) ctaButton.textContent = t.heroButton;
+
+      // Update features section titles
+      const featuresTitle = document.querySelector('#features .section-title');
+      if (featuresTitle) featuresTitle.textContent = t.featuresTitle;
+      const featuresSubtitle = document.querySelector('#features .section-subtitle');
+      if (featuresSubtitle) featuresSubtitle.textContent = t.featuresSubtitle;
+
+      // Update feature cards
+      const features = document.querySelectorAll('.feature');
+      if (features.length >= 6) {
+        features[0].querySelector('h3').textContent = t.featureBilingual;
+        features[0].querySelector('p').textContent = t.featureBilingualDesc;
+        features[1].querySelector('h3').textContent = t.featureLearning;
+        features[1].querySelector('p').textContent = t.featureLearningDesc;
+        features[2].querySelector('h3').textContent = t.featureQuizzes;
+        features[2].querySelector('p').textContent = t.featureQuizzesDesc;
+        features[3].querySelector('h3').textContent = t.featureProgress;
+        features[3].querySelector('p').textContent = t.featureProgressDesc;
+        features[4].querySelector('h3').textContent = t.featureClassroom;
+        features[4].querySelector('p').textContent = t.featureClassroomDesc;
+        features[5].querySelector('h3').textContent = t.featureConfidence;
+        features[5].querySelector('p').textContent = t.featureConfidenceDesc;
+      }
+
+      // Update topics section titles
+      const topicsTitle = document.querySelector('#topics .section-title');
+      if (topicsTitle) topicsTitle.textContent = t.topicsTitle;
+      const topicsSubtitle = document.querySelector('#topics .section-subtitle');
+      if (topicsSubtitle) topicsSubtitle.textContent = t.topicsSubtitle;
+
+      // Update screenshots section (if elements exist)
+      const screenshotsTitle = document.querySelector('#screenshots .section-title');
+      if (screenshotsTitle) screenshotsTitle.textContent = t.screenshotsTitle;
+      const screenshotsSubtitle = document.querySelector('#screenshots .section-subtitle');
+      if (screenshotsSubtitle) screenshotsSubtitle.textContent = t.screenshotsSubtitle;
+
+
+      // Update how it works section (if elements exist)
+      const howItWorksTitle = document.querySelector('#how-it-works .section-title');
+      if (howItWorksTitle) howItWorksTitle.textContent = t.howItWorksTitle;
+      const howItWorksSubtitle = document.querySelector('#how-it-works .section-subtitle');
+      if (howItWorksSubtitle) howItWorksSubtitle.textContent = t.howItWorksSubtitle;
+
+
+      const steps = document.querySelectorAll('.step');
+      if (steps.length >= 3) {
+        steps[0].querySelector('h3').textContent = t.howItWorksStep1;
+        steps[0].querySelector('p').textContent = t.howItWorksStep1Desc;
+        steps[1].querySelector('h3').textContent = t.howItWorksStep2;
+        steps[1].querySelector('p').textContent = t.howItWorksStep2Desc;
+        steps[2].querySelector('h3').textContent = t.howItWorksStep3;
+        steps[2].querySelector('p').textContent = t.howItWorksStep3Desc;
+      }
+
+      // Update footer
+      const footerColumns = document.querySelectorAll('.footer-column');
+      if (footerColumns.length >= 3) {
+        const aboutP = footerColumns[0].querySelector('p');
+        if (aboutP) aboutP.textContent = t.footerAbout;
+
+        const quickLinksH3 = footerColumns[1].querySelector('h3');
+        if (quickLinksH3) quickLinksH3.textContent = t.footerQuickLinks;
+
+        const contactH3 = footerColumns[2].querySelector('h3');
+        if (contactH3) contactH3.textContent = t.footerContact;
+
+        // Update quick links in footer
+        const quickLinks = footerColumns[1].querySelectorAll('a');
+        if (quickLinks.length >= 4) {
+          quickLinks[0].textContent = t.navFeatures;
+          quickLinks[1].textContent = t.navTopics;
+          quickLinks[2].textContent = t.navScreenshots;
+          quickLinks[3].textContent = t.navHowItWorks;
+        }
+      }
+
+      const copyrightP = document.querySelector('.copyright p');
+      if (copyrightP) copyrightP.innerHTML = `&copy; 2025 Gaelchursaí. ${t.footerCopyright}`;
+    }
+
+
+    // --- Function for Topic Click Listeners ---
+    function setupTopicClickListeners() {
+      const topicsGrid = document.querySelector('.topics-grid');
+      if (topicsGrid) {
+        // Use event delegation on the grid container
+        topicsGrid.addEventListener('click', function (event) {
+          // Check if the click originated from a topic header or its children
+          const header = event.target.closest('.topic-header');
+          if (!header) return; // Exit if click wasn't on a header
+
+          // Check if the screen width is mobile (matches the CSS media query)
+          if (window.innerWidth <= 768) {
+            const topicCard = header.closest('.topic-card');
+            if (!topicCard) return;
+
+            // Check if the clicked card is already active
+            const isActive = topicCard.classList.contains('active');
+
+            // Deactivate all other topic cards first (important for only one open at a time)
+            document.querySelectorAll('.topic-card.active').forEach(activeCard => {
+              // Only remove active class if it's not the currently clicked card
+              if (activeCard !== topicCard) {
+                activeCard.classList.remove('active');
+              }
             });
-            
-            // Contact form handling
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // In a real implementation, you would send the form data to your backend
-                alert('Your message has been sent. Thank you for contacting us!');
-                contactForm.reset();
-            });
+
+            // Toggle the active class on the clicked card
+            topicCard.classList.toggle('active');
+          }
         });
-    </script>
+      }
+    }
+    // --- End Function ---
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initial setup
+      updatePageLanguage(); // Set initial language text based on default
+      renderTopics();
+      setupTopicClickListeners(); // Setup initial listeners
+
+      // Setup language toggle button click event
+      if (languageToggleButton) {
+        languageToggleButton.addEventListener('click', toggleLanguage);
+      }
+
+
+      // Add scroll animations using Intersection Observer
+      const animatedElements = document.querySelectorAll('.animate');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = 'translateY(0)';
+              observer.unobserve(entry.target); // Stop observing once animated
+            }
+          });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        animatedElements.forEach(element => {
+          observer.observe(element);
+        });
+      } else {
+        // Fallback for older browsers
+        animatedElements.forEach(element => {
+          element.style.opacity = 1;
+          element.style.transform = 'translateY(0)';
+        });
+      }
+    });
+  </script>
 </body>
+
 </html>
